@@ -1,0 +1,48 @@
+<div class="container">
+  <mat-form-field appearance="outline">
+    <mat-label>Search</mat-label>
+    <input matInput [(ngModel)]="searchTerm" (keyup)="applySearch()" />
+  </mat-form-field>
+  <button mat-raised-button  color="primary" (click)="addItem()" class="add-button">Add Item</button>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Columns definitions here -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let article"> {{article.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef> Title </th>
+      <td mat-cell *matCellDef="let article"> {{article.title}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef> Description </th>
+      <td mat-cell *matCellDef="let article"> {{article.description}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef> Type </th>
+      <td mat-cell *matCellDef="let article"> {{article.type}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="createdDate">
+      <th mat-header-cell *matHeaderCellDef> Created Date </th>
+      <td mat-cell *matCellDef="let article"> {{article.createdDate | date}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let article">
+        <button mat-button (click)="editarticle(article)">Edit</button>
+        <button mat-button (click)="deletearticle(article.id)">Delete</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [length]="totalarticles" [pageSize]="5" (page)="onPageChange($event)">
+  </mat-paginator>
+</div>

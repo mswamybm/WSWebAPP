@@ -1,0 +1,114 @@
+<!-- <div class="container">
+  <form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="title" />
+      <mat-error *ngIf="articleForm.get('title')?.invalid">Title is required</mat-error>
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+      <mat-error *ngIf="articleForm.get('description')?.invalid">Description is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Category</mat-label>
+      <textarea matInput formControlName="category"></textarea>
+      <mat-error *ngIf="articleForm.get('category')?.invalid">Category is required</mat-error>
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline">
+      <mat-label>Created Date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="createdDate" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    
+    <button mat-raised-button color="primary" type="submit">Save</button>
+  </form>
+</div> -->
+
+<!-- <div class="container">
+  <form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
+    <mat-grid-list cols="1" rowHeight="auto">
+      <mat-grid-tile>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Title</mat-label>
+          <input matInput formControlName="title" />
+          <mat-error *ngIf="articleForm.get('title')?.invalid">Title is required</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="description"></textarea>
+          <mat-error *ngIf="articleForm.get('description')?.invalid">Description is required</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="category" />
+          <mat-error *ngIf="articleForm.get('category')?.invalid">Category is required</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Created Date</mat-label>
+          <input matInput formControlName="createdDate" type="date" />
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <button mat-raised-button color="primary" type="submit">Save</button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
+</div> -->
+
+<div class="container">
+  <form [formGroup]="articleForm" (ngSubmit)="onSubmit()" class="form-container">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title" />
+      <mat-error *ngIf="articleForm.get('title')?.invalid">Title is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+      <mat-error *ngIf="articleForm.get('description')?.invalid">Description is required</mat-error>
+    </mat-form-field>
+
+    <!-- <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Category</mat-label>
+      <input matInput formControlName="category" />
+      <mat-error *ngIf="articleForm.get('category')?.invalid">Category is required</mat-error>
+    </mat-form-field> -->
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Type</mat-label>
+      <mat-select formControlName="type">
+        <mat-option *ngFor="let cat of categoryitem | keyvalue" [value]="cat.value">
+          {{ cat.value }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="articleForm.get('type')?.invalid">Type is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width" *ngIf="!isEditMode">
+      <mat-label>Created Date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="createdDate" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    
+
+    <button mat-raised-button color="primary" type="submit">Save</button>
+  </form>
+</div>
